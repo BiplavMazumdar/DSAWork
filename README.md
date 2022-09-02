@@ -32,3 +32,62 @@ Primitive data types can store only a single value.
 # To store multiple and complex values, non-primitive data types are used.
 # Object - Used to store collection of data.
 object,Array
+
+
+# Q2 Explain Hoisting in javascript.
+
+Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
+
+Check with file
+
+
+//Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
+
+
+//This means that irrespective of where the variables and functions are declared, 
+//they are moved on top of the scope. The scope can be both local and global.
+//Example 1
+hoistedVariable = 3;
+console.log(hoistedVariable);
+var hoistedVariable;
+
+// * It is only work with var 
+// not with const and let
+
+
+// in const and let throw an error  can not 'hoistedVariable' before initialization
+
+
+//Example 2:
+
+m1();
+function m1(){
+    console.log("hello world");
+}
+// even when the function is declared after calling
+
+
+// Example 3
+ 
+function m2(){
+    x = 23;
+    console.log(x);
+    var x; //Hoisting takes place in the local scope as well
+}
+
+m2();
+
+// Hoisting takes place in the local scope as well
+
+var v;
+console.log(v); // Outputs "undefined" since the initialization of "x" is not hoisted
+v = 98;
+
+// Note - To avoid hoisting, you can run javascript in strict mode by using “use strict” on top of the code:
+
+"use strict";
+z = 93; // Gives an error since 'z' is not declared
+console.log(z);
+var z;
+
+
