@@ -1,0 +1,10 @@
+Time Complexity Of A Computer Program
+
+Time complexity is the time taken by an algorithm/program to run as a function of the length of the input.
+
+Why is it so important?
+
+It can clearly distinguish between two different algorithms based on their efficiency.
+It’s independent of the machine on which the algorithm is run.
+We can get a direct correlation with the length of the input.
+
