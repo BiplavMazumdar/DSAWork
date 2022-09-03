@@ -145,7 +145,23 @@ printAge(); // Error
 Running the code snippet above throws an error even though the variable age is declared in the global scope. This is because the console.log statement inside the printAge function doesn’t have access to that outer age variable, since another age variable is declared within the printAge function.
 
 
+function print() {
+  function log() {
+    console.log(age);
+  }
 
+  const age = 20;
+  log();
+}
+
+print(); // 20
+
+
+How are we able to access age before its declaration?
+
+Actually, age is accessed after the declaration of age variable because the console.log is inside another function that is called after the declaration of the age variable. By the time the age variable is accessed inside the log function, the age variable’s declaration has already been executed.
+
+This means that it’s not about where, but about when the let variable or const constant is accessed. Temporal Dead Zone relates to time, not the space above the declaration of let or const.
 
 
 
