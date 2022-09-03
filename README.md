@@ -89,5 +89,40 @@ v = 98;
 z = 93; // Gives an error since 'z' is not declared
 console.log(z);
 var z;
+# // important concept 
+
+var foo = 1;
+console.log(foo); // here we will get 1;
+
+console.log(fooo); // here we will get undefine;   because value decleration after console in hoisting initialisation will work
+                   // but in case of decleration we have to declare first then call
+var fooo = 1
+
+# 3. Why do we use the word “debugger” in javascript?
+
+The debugger for the browser must be activated in order to debug the code. 
+Built-in debuggers may be switched on and off, requiring the user to report faults.
+The remaining section of the code should stop execution before moving on to the next line while debugging.
+
+# 4. Difference between “ == “ and “ === “ operators.
+Both are comparison operators. The difference between both the operators is that “==” is used to compare values whereas, “ === “ is used to compare both values and types.
+
+# 5. Difference between var and let keyword in javascript.
+
+Some differences are 
+
+* From the very beginning, the 'var' keyword was used in JavaScript programming whereas the keyword 'let' was just added in 2015.
+
+* The keyword 'Var' has a function scope. Anywhere in the function, the variable specified using var is accessible but in ‘let’ the scope of a variable declared with the 'let' keyword is limited to the block in which it is declared. Let's start with a Block Scope.
+
+* In ECMAScript 2015, let and const are hoisted but not initialized. Referencing the variable in the block before the variable declaration results in a ReferenceError because the variable is in a "temporal dead zone" from the start of the block until the declaration is processed.
+
+# Temporal Dead Zone is the period of time during which the let and const declarations cannot be accessed. Temporal Dead Zone starts when the code execution enters the block which contains the let or const declaration and continues until the declaration has executed.
+
+# टेम्पोरल डेड ज़ोन उस समय की अवधि है जिसके दौरान लेट और कॉन्स्ट घोषणाओं तक पहुँचा नहीं जा सकता है। टेम्पोरल डेड ज़ोन तब शुरू होता है जब कोड निष्पादन उस ब्लॉक में प्रवेश करता है जिसमें लेट या कॉन्स्ट डिक्लेरेशन होता है और तब तक जारी रहता है जब तक कि डिक्लेरेशन निष्पादित नहीं हो जाता।
+
+
+
+
 
 
