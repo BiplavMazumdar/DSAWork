@@ -121,6 +121,30 @@ Some differences are
 
 # टेम्पोरल डेड ज़ोन उस समय की अवधि है जिसके दौरान लेट और कॉन्स्ट घोषणाओं तक पहुँचा नहीं जा सकता है। टेम्पोरल डेड ज़ोन तब शुरू होता है जब कोड निष्पादन उस ब्लॉक में प्रवेश करता है जिसमें लेट या कॉन्स्ट डिक्लेरेशन होता है और तब तक जारी रहता है जब तक कि डिक्लेरेशन निष्पादित नहीं हो जाता।
 
+console.log(foo); // undefined
+var foo = 123;
+
+console.log(foo); // Error
+let foo = 123;
+
+# This might lead you to think that hoisting doesn’t apply to let and const; that is an incorrect assumption.
+
+This might come as a surprise, but similar to var, variables declared with let and constants declared using const are also hoisted; it is just that how they are hoisted is different from how var variables are hoisted.
+
+ # Let’s look at an example of code that proves that variables declared using let are also hoisted.
+ 
+ let age = 50;
+
+function printAge() {
+  console.log(age);
+  let age = 30;
+}
+
+printAge(); // Error
+
+Running the code snippet above throws an error even though the variable age is declared in the global scope. This is because the console.log statement inside the printAge function doesn’t have access to that outer age variable, since another age variable is declared within the printAge function.
+
+
 
 
 
