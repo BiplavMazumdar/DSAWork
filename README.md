@@ -164,5 +164,61 @@ Actually, age is accessed after the declaration of age variable because the cons
 This means that it’s not about where, but about when the let variable or const constant is accessed. Temporal Dead Zone relates to time, not the space above the declaration of let or const.
 
 
+# 6 Explain Implicit Type Coercion in javascript.
+
+Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+
+* String coercion
+
+String coercion takes place while using the ‘ + ‘ operator. When a number is added to a string, the number type is always converted to the string type.
+
+Ex 1 :- var x = 3;
+var y = "3";
+    
+x + y // Returns "33" 
+
+Example 2:
+
+var x = 24;
+var y = "Hello";
+x + y   // Returns "24Hello"; 
+
+Note - ‘ + ‘ operator when used to add two numbers, outputs a number. The same ‘ + ‘ operator when used to add two strings, outputs the concatenated string:
+
+var name = "Vivek";
+var surname = " Bisht";
+name + surname     // Returns "Vivek Bisht" 
+
+When JavaScript sees that the operands of the expression x + y are of different types ( one being a number type and the other being a string type ), it converts the number type to the string type and then performs the operation. Since after conversion, both the variables are of string type, the ‘ + ‘ operator outputs the concatenated string “33” in the first example and “24Hello” in the second example.
+
+Note - Type coercion also takes place when using the ‘ - ‘ operator, but the difference while using ‘ - ‘ operator is that, a string is converted to a number and then subtraction takes place.
+
+var x = 3;
+Var y = "3";
+x - y    //Returns 0 since the variable y (string type) is converted to a number type
+
+Boolean Coercion
+Boolean coercion takes place when using logical operators, ternary operators, if statements, and loop checks. To understand boolean coercion in if statements and operators, we need to understand truthy and falsy values.
+
+Logical operators:
+Logical operators in javascript, unlike operators in other programming languages, do not return true or false. They always return one of the operands.
+
+OR ( | | ) operator - If the first value is truthy, then the first value is returned. Otherwise, always the second value gets returned.
+
+AND ( && ) operator - If both the values are truthy, always the second value is returned. If the first value is falsy then the first value is returned or if the second value is falsy then the second value is returned.
+
+Equality Coercion
+Equality coercion takes place when using ‘ == ‘ operator. As we have stated before
+
+# 7. Is javascript a statically typed or a dynamically typed language?
+
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to a statically typed language, where the type of a variable is checked during compile-time.
+
+Since javascript is a loosely(dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type.
+
+For example, a variable that is assigned a number type can be converted to a string type:
+
+var a = 23;
+var a = "Hello World!";
 
 
