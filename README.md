@@ -61,3 +61,61 @@ const setCount = () => {
 
 We can make use of setCounter() method for updating the state of count anywhere. In this example, we are using setCounter() inside the setCount function where various other things can also be done. The idea with the usage of hooks is that we will be able to keep our code more functional and avoid class-based components if they are not required.
 
+# 5 What are keys in React?
+
+A key is a special string attribute that needs to be included when using lists of elements.
+
+1. Use Array.map
+2. Not a for loop
+3. Give each item a unique key
+4. Avoid using array index as the key
+
+Example of a list using key -
+
+const ids = [1,2,3,4,5];
+const listElements = ids.map((id)=>{
+return(
+<li key={id.toString()}>
+  {id}
+</li>
+)
+})
+
+Importance of keys -
+
+* Keys help react identify which elements were added, changed or removed.
+* Keys should be given to array elements for providing a unique identity for each element.
+* Without keys, React does not understand the order or uniqueness of each element.
+* With keys, React has an idea of which particular element was deleted, edited, and added.
+* Keys are generally used for displaying a list of data coming from an API.
+
+***Note- Keys used within arrays should be unique among siblings. They need not be globally unique.
+
+
+# 6 What is JSX?
+
+JSX stands for JavaScript XML. 
+It allows us to write HTML inside JavaScript and place them in the DOM without using functions like appendChild( ) or createElement( ).
+
+As stated in the official docs of React, JSX provides syntactic sugar for React.createElement( ) function.
+
+Note- We can create react applications without using JSX as well.
+
+Let’s understand how JSX works:
+
+Without using JSX, we would have to create an element by the following process:
+
+const text = React.createElement('p', {}, 'This is a text');
+const container = React.createElement('div','{}',text );
+ReactDOM.render(container,rootElement);
+
+Using JSX, the above code can be simplified:
+
+const container = (
+<div>
+  <p>This is a text</p>
+</div>
+);
+ReactDOM.render(container,rootElement);
+As one can see in the code above, we are directly using HTML inside JavaScript.
+
