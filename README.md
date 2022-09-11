@@ -306,4 +306,124 @@ From the above example, we can see that while passing non-primitive data types, 
 
 Therefore, non-primitive data types are always passed by reference.
 
+# 10 What is an Immediately Invoked Function in JavaScript? (जावास्क्रिप्ट में तत्काल आमंत्रित कार्य क्या है)
+
+// It is a design pattern which is also know as Self-executing anonymous function and contain two major parts
+
+  // This first is the anonymous fumction with lexical scope enclose within the Grouping Operator ().
+  // This prevents accessing variables within IIFE idiom as well as polluting the global scope.
+
+  // The second part creates the immediately invoked function expression () through which the js 
+  // engine will directly interpret the function
+
+  // Anonymous Function is a function that does not have any name associated with it. 
+  //Normally we use the function keyword before the function name to define a function in JavaScript, however, 
+  //in anonymous functions in JavaScript, we use only the function keyword without the function name.
+
+An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
+
+// Immediately Invoked Function in JavaScript ()
+// An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
+
+// Syntax of IIFE :
+
+(function  m1(){ 
+    // Do something;
+}) ();
+// (local function) m1(): void
+
+
+// To understand IIFE, we need to understand the two sets of parentheses that are added while creating an IIFE :
+
+// The first set of parenthesis:
+
+(function (){
+    //Do something;
+ })
+
+ //  * While executing javascript code, whenever the compiler sees the word “function”, 
+ //  * it assumes that we are declaring a function in the code. Therefore, if we do not use the first set of parentheses,
+ //  the compiler throws an error because it thinks we are declaring a function, and by the syntax of declaring a function, 
+ //  a function should always have a name
+
+
+ function() {
+    //Do something;
+  }
+  // Compiler gives an error since the syntax of declaring a function is wrong in the code above.
+  
+
+  // To remove this error, we add the first set of parenthesis that tells the compiler that the function is not a function declaration,
+  // instead, it’s a function expression.
+
+  // The second set of parenthesis:
+
+  (function (){
+    //Do something;
+  })();
+
+  // * From the definition of an IIFE, we know that our code should run as soon as it is defined. 
+
+  // * A function runs only when it is invoked.
+
+  // * If we do not invoke the function, the function declaration is returned:
+
+  (function (){
+    // Do something;
+  })
+  
+  // Returns the function declaration
+
+  // Therefore to invoke the function, we use the second set of parenthesis.
+  
+  (function(){
+    console.log("This is iffy or ifft expression it run's asap define no need to call the function");
+  })();
+  // this function have no call back that's why it's not calling so we have to give call back ();
+  
+  (function(name){
+    console.log("Hello "+name);
+})("Thapa Tech");
+  
+
+
+# 11 What do you mean by strict mode in javascript and characteristics of javascript strict-mode?
+
+In ECMAScript 5, a new feature called JavaScript Strict Mode allows you to write a code or a function in a "strict" operational environment.
+In most cases, this language is 'not particularly severe' when it comes to throwing errors.
+In 'Strict mode,' however, all forms of errors, including silent errors, will be thrown.
+As a result, debugging becomes a lot simpler.
+Thus programmer's chances of making an error are lowered
+
+Characteristics of strict mode in javascript
+
+1. Duplicate arguments are not allowed by developers.
+2. In strict mode, you won't be able to use the JavaScript keyword as a parameter or function name.
+3. The 'use strict' keyword is used to define strict mode at the start of the script. Strict mode is supported by all browsers
+4. Engineers will not be allowed to create global variables in 'Strict Mode.
+
+// strict mode can apply to entire script or individual functions 
+
+// 'use strict'; // this will apply to full script
+
+function m1(){
+    'use strict';
+     strict = "hello This is strict mode";
+    console.log(strict);
+}// This will throw an erroe that strict is not define 
+
+
+function m2(){
+    no_strict = "hello strict mode is not use";
+    console.log(no_strict);
+}
+
+m1();
+m2();
+
+
+
+
+
+
 
