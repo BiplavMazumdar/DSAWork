@@ -421,6 +421,47 @@ function m2(){
 m1();
 m2();
 
+# 12. Explain Higher Order Functions in javascript.
+
+Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
+Higher-order functions are a result of functions being first-class citizens in javascript.
+Examples of higher-order functions:
+
+function higherOrder(fn) {
+  fn();
+}
+   
+higherOrder(function() { console.log("Hello world") });  
+
+function higherOrder2() {
+  return function() {
+    return "Do something";
+  }
+}      
+var x = higherOrder2();
+x()   // Returns "Do something"
+
+# 13. Explain “this” keyword.
+
+The “this” keyword refers to the object that the function is a property of.
+The value of the “this” keyword will always depend on the object that is invoking the function.\
+
+Confused? Let’s understand the above statements by examples:
+
+function doSomething() {
+  console.log(this);
+}
+   
+doSomething();
+
+The “this” keyword refers to the object that the function is a property of.
+
+In the above code, the function is a property of which object?
+Since the function is invoked in the global context, the function is a property of the global object.
+
+Therefore, the output of the above code will be the global object. Since we ran the above code inside the browser, the global object is the window object.
+
+
 
 
 
