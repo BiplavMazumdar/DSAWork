@@ -1,0 +1,139 @@
+useCallback Hook
+It will return memorized function
+One reason to use useCallback is to prevent a component from re-rendering unless its props have changed.
+
+when ever we click on button to increse the count the page will re-render to avoide this re-rendering we are use useCallback hook
+while using usestate every time when state change it will re-render
+
+
+
+useMemo Hook
+It will return memorized value
+
+
+Both help to increse the performance of react application
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+This Approch is good but performance is bad because it re-render the un-neccesary component again and again
+App.js 
+
+import { useCallback, useState } from "react";
+import "./styles.css";
+import Todo from "../Todo";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+  const addTodo = () => {
+    setTodos((t) => [...t, "New Todo"]);
+  };
+  return (
+    <div className="App">
+      <Todo todos={todos} addTodo={addTodo} />
+      <hr />
+      <div>Count: {count}</div>
+      <button onClick={increment}>+</button>
+    </div>
+  );
+}
+
+
+Todo.js
+
+import react from "react";
+
+export default function Todo({ todos, addTodo }) {
+  console.log("child");
+
+  return (
+    <>
+      {todos.map((todo, index) => {
+        return (
+          <>
+            <div key={index}>{todo}</div>
+          </>
+        );
+      })}
+
+      <button onClick={addTodo}>Add Todo</button>
+    </>
+  );
+}
+
+Try running this and click the count increment button.
+
+You will notice that the Todos component re-renders even when the todos do not change.
+
+Why does this not work? We are using memo, so the Todos component should not re-render since neither the todos state nor the addTodo 
+function are changing when the count is incremented.
+
+This is because of something called "referential equality".
+
+Every time a component re-renders, its functions get recreated. Because of this, the addTodo function has actually changed.
+
+To Fix this issue we can use Usecallback()
+
+To fix this, we can use the useCallback hook to prevent the function from being recreated unless necessary.
+
+Use the useCallback Hook to prevent the Todos component from re-rendering needlessly:
+
+import { useState, useCallback } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, [todos]);
+
+  return (
+    <>
+      <Todos todos={todos} addTodo={addTodo} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+
+// Add data in Todo
+
+import { useState } from "react";
+import "./styles.css";
+
+const ftdata = ["Apple","Mango","orange"]
+
+export default function App() {
+  const [data,setdata] = useState(["Apple"]);
+
+  const adData =()=>{
+    setdata((e)=>[...e,"new data"]);
+  }
+  return (
+    <div className="App">
+      <button onClick={adData}>click</button>
+      <h1>{data}</h1>
+      <h2>Start editing to see some magic happen!</h2>
+    </div>
+  );
+}
+
+
